@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace surfm.yoar.poker {
     public class CardInfo {
-        public CardNum num { get; private set; }
-        public Flower flower { get; private set; }
+        public CardNumF num { get { return CardNumF.g(data.num); } }
+        public FlowerF flower { get { return FlowerF.g(data.flower); } }
+        public CardData data { get; private set; }
 
-        public CardInfo(Flower f, CardNum n) {
-            num = n;
-            flower = f;
+        public CardInfo(CardData d) {
+            data = d;
         }
 
         public string prefabPath() {
             string temp = "{0}/{1}_{2}";
-            return string.Format(temp,FlowerF.g(flower).prefabPath(),flower.ToString());
+            return string.Format(temp, flower.prefabDirPath(), flower.f.ToString(), num.getName());
         }
 
 
         public string uid() {
-            return getUid(flower,num);
+            return data.getUid();
         }
-
-        public static string getUid(Flower f,CardNum c) {
-            return f.ToString() + c.ToString();
-        }
-
-
 
     }
 }

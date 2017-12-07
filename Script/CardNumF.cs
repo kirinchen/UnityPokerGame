@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace surfm.yoar.poker {
@@ -14,7 +15,7 @@ namespace surfm.yoar.poker {
         public string getName() {
             switch (n) {
                 case CardNum.N1:
-                    return "1";
+                    return "A";
                 case CardNum.N2:
                     return "2";
                 case CardNum.N3:
@@ -43,9 +44,13 @@ namespace surfm.yoar.poker {
             throw new System.NullReferenceException("not find n=" + n);
         }
 
+        internal static CardNum random() {
+            return (CardNum)UnityEngine.Random.Range(1, 14);
+        }
+
         public static CardNumF g(CardNum c) {
             if (!map.ContainsKey(c)) {
-                map.Add(c,new CardNumF(c));
+                map.Add(c, new CardNumF(c));
             }
             return map[c];
         }

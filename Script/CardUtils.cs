@@ -6,20 +6,19 @@ namespace surfm.yoar.poker {
 
         private static Dictionary<string, CardInfo> infoMap = new Dictionary<string, CardInfo>();
 
-        public static CardInfo getInfo(Flower f, CardNum n) {
-            string k = CardInfo.getUid(f, n);
+        internal static CardInfo getInfo(CardData d) {
+            string k = d.getUid();
             if (!infoMap.ContainsKey(k)) {
-                CardInfo ci = new CardInfo(f, n);
+                CardInfo ci = new CardInfo(d);
                 infoMap.Add(k, ci);
             }
             return infoMap[k];
         }
 
-        public static Card getCard(Flower f, CardNum n) {
-            CardInfo ci = getInfo(f,n);
-            GameObject go = Resources.Load<GameObject>(ci.prefabPath());
-            Card ans = go.AddComponent<Card>();
-            ans.init(ci);
+        internal static Card genCard(CardData d,object tar) {
+            CardInfo ci = getInfo(d);
+            Card ans = PokerConfig.getInstance().instantiateCard();
+            ans.init(ci, tar);
             return ans;
         }
 

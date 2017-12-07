@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +9,14 @@ namespace surfm.yoar.poker {
 
         private static Dictionary<Flower, FlowerF> map = new Dictionary<Flower, FlowerF>();
 
-        private Flower f;
+        public Flower f { get; private set; }
 
         private FlowerF(Flower f) {
             this.f = f;
         }
 
-        public string prefabPath() {
-            return "@Card" + f.ToString();
+        public string prefabDirPath() {
+            return "@Card/" + f.ToString() + "s";
         }
 
 
@@ -26,9 +27,12 @@ namespace surfm.yoar.poker {
             return map[gf];
         }
 
+        internal static Flower random() {
+            return (Flower)UnityEngine.Random.Range(0,4);
+        }
     }
 
     public enum Flower {
-        Spades, Heart, Diamond, Club
+        Spade, Heart, Diamond, Club
     }
 }
