@@ -28,11 +28,11 @@ namespace surfm.yoar.poker {
         }
 
         internal static Flower random() {
-            return (Flower)UnityEngine.Random.Range(0,4);
+            return (Flower)UnityEngine.Random.Range(0, 4);
         }
     }
 
     public enum Flower {
-        Spade, Heart, Diamond, Club
+        NONE, Spade, Heart, Diamond, Club
     }
 }

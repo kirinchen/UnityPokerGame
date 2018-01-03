@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace surfm.yoar.poker {
-    public class DemoHolder : CardHolder {
+    public class SimpleHolder : CardHolder {
+
+        public Card.State state = Card.State.Bright;
 
         void Start() {
             set(data, null);
-            current.setState(Card.State.Bright);
+            current.setState(state);
         }
 
         internal override bool findExist(Card d) {

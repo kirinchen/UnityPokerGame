@@ -40,6 +40,8 @@ namespace surfm.yoar.poker {
                     return "Q";
                 case CardNum.K:
                     return "K";
+                case CardNum.NONE:
+                    return "NONE";
             }
             throw new System.NullReferenceException("not find n=" + n);
         }
