@@ -11,7 +11,6 @@ namespace surfm.yoar.poker {
         internal override void init(CardInfo i, object target) {
             string p = i.prefabPath();
             GameObject g = Resources.Load<GameObject>(p);
-            Debug.Log("p=" + p + " g=" + g);
             body = Instantiate(g, transform, false);
             orgRot = body.transform.localEulerAngles;
             base.init(i, target);
