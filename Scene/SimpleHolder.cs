@@ -21,7 +21,7 @@ namespace surfm.yoar.poker {
         }
 
         internal override bool findExist(Card d) {
-            return string.Equals(d.info.uid(), data.getUid());
+            return false;
         }
     }
 }
