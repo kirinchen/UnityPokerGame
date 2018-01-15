@@ -9,8 +9,7 @@ namespace surfm.yoar.poker {
         private Vector3 orgRot;
 
         internal override void init(CardInfo i, object target) {
-            string p = i.prefabPath();
-            GameObject g = Resources.Load<GameObject>(p);
+            GameObject g = i.readObj();
             body = Instantiate(g, transform, false);
             orgRot = body.transform.localEulerAngles;
             base.init(i, target);

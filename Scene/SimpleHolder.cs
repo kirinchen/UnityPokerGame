@@ -14,14 +14,23 @@ namespace surfm.yoar.poker {
             }
         }
 
-        public void init() {
-            if (current != null) return;
+        public bool init() {
+            if (current != null) return false;
             set(data, null);
             current.setState(state);
+            return true;
         }
 
         internal override bool findExist(Card d) {
             return false;
+        }
+
+        internal void setState(Card.State s) {
+            state = s;
+            if (!init()) {
+                current.setState(s);
+            }
+
         }
     }
 }
