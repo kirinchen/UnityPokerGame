@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,9 @@ namespace surfm.yoar.poker {
 
     [System.Serializable]
     public class CardData {
+        [JsonConverter(typeof(StringEnumConverter))]
         public CardNum num;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Flower flower;
 
         public static string getUid(Flower f, CardNum c) {
