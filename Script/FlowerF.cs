@@ -1,4 +1,5 @@
-﻿using System;
+﻿using surfm.tool;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace surfm.yoar.poker {
     public class FlowerF {
-
+        public static readonly string DEFAULT_PREFIX ="@Card/";
         private static Dictionary<Flower, FlowerF> map = new Dictionary<Flower, FlowerF>();
 
         public Flower f { get; private set; }
@@ -16,7 +17,7 @@ namespace surfm.yoar.poker {
         }
 
         public string prefabDirPath() {
-            return "@Card/" + f.ToString() + "s";
+            return getPrefix() + f.ToString() + "s";
         }
 
 
@@ -29,6 +30,12 @@ namespace surfm.yoar.poker {
 
         internal static Flower random() {
             return (Flower)UnityEngine.Random.Range(0, 4);
+        }
+
+        private static string getPrefix() {
+            ConstantRepo cr = ConstantRepo.getInstance();
+            string prefix = cr.opt("surfm.yoar.poker.prefix",DEFAULT_PREFIX);
+            return prefix;
         }
     }
 
